@@ -4,6 +4,10 @@ parameters:
     #parameter_name: value
 
 services:
+    app.form.profile:
+        class: AppBundle\Form\ProfileType
+        tags:
+            - { name: form.type, alias: app_user_profile }
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services

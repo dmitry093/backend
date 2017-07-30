@@ -6,10 +6,10 @@
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
-    {% stylesheets '@bootstrap_css' %}
+    {% stylesheets '@bootstrap_css' '@select2_css' %}
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
     {% endstylesheets %}
-    {% javascripts '@jquery' '@bootstrap_js' %}
+    {% javascripts '@jquery' '@bootstrap_js' '@select2_js' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
@@ -27,6 +27,11 @@
             margin: 0 auto;
         }
     </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".select2").select2();
+        });
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -56,6 +61,18 @@
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <p class="navbar-text navbar-right">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </p>
             <ul class="nav navbar-nav navbar-right">
+                {%  set class = (app.request.attributes.get("_route") in ['fos_user_group_list','fos_user_group_edit', 'fos_user_group_show','fos_user_group_new' ]) ? ' active' %}
+                <li class="dropdown{{ class }}">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        {{ 'admininstration'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+
+                        </li>
+                    </ul>
+                </li>
                 {%  set class = (app.request.attributes.get("_route") in ['fos_user_profile_show','fos_user_profile_edit', 'fos_user_change_password']) ? ' active' %}
                 <li class="dropdown{{ class }}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">

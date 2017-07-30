@@ -69,6 +69,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: AppBundle\Entity\User
+    profile:
+        form:
+            type: AppBundle\Form\ProfileType
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
@@ -91,6 +94,12 @@ assetic:
     filters:
         cssrewrite: ~
     assets:
+        select2_js:
+            inputs:
+                - "%kernel.root_dir%/../vendor/select2/select2/dist/js/select2.full.js"
+        select2_css:
+            inputs:
+                - "%kernel.root_dir%/../vendor/select2/select2/dist/css/select2.css"
         bootstrap_js:
             inputs:
                 - "%kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.js"

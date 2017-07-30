@@ -1,5 +1,15 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="fos_user_group_show">
+    <p>{{ 'group.show.id'|trans }}: {{ group.getId() }}</p>
     <p>{{ 'group.show.name'|trans }}: {{ group.getName() }}</p>
+    {{ 'group.show.roles'|trans }}:
+    <ul>
+    {% for role in group.getRoles() %}
+        <li> {{ role }}</li>
+    {%  endfor %}
+    </ul>
+    <a type="button"  class="btn btn-primary" href="{{  path('fos_user_group_edit', {'groupName': group.getName()}) }}">
+        {{ 'group.edit'|trans({}, 'FOSUserBundle') }}
+    </a>
 </div>

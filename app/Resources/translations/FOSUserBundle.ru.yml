@@ -5,3 +5,5 @@ profile:
     profile: 'Профиль'
     show: 'Просмотр'
     edit: 'Редактировать'
+    roles: 'Роли'
+admininstration: 'Администрирование'
