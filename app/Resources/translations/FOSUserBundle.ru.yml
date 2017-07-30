@@ -1,0 +1,7 @@
+security:
+    login:
+        signin: 'Авторизуйтесь'
+profile:
+    profile: 'Профиль'
+    show: 'Просмотр'
+    edit: 'Редактировать'
